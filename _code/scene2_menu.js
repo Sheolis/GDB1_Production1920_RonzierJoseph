@@ -1,26 +1,34 @@
-class S5_Jeu3 extends Phaser.Scene{
+class Scene2_menu extends Phaser.Scene{
     constructor() {
-        super('S5_Jeu3')
+        super('scene2_menu')
       }
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> INIT
     init(){
-
-    }//END INIT
+    }
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PRELOAD
     preload(){
-
-    }//END PRELOAD
+        this.load.image('background2','assets/scene2/background.png');
+    }
 
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CREATE
     create(){
-
-    }//END CREATE
+        this.cursors = this.input.keyboard.createCursorKeys();
+        this.add.image(720, 1280, 'background2');
+    }
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> UPDATE
     update(){
-
+        if (this.cursors.right.isDown)
+            {
+                this.scene.start("scene3_game1" );
+            }
+        if (this.cursors.left.isDown)
+            {
+                this.scene.start("scene1_start" );
+            }
     }//END UPDATE
+
 
 }//END SCENE

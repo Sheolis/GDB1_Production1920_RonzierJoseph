@@ -1,35 +1,33 @@
-class S1_Start extends Phaser.Scene{
+class Scene4_game2 extends Phaser.Scene{
     constructor() {
-        super('S1_Start')
+        super('scene4_game2')
       }
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> INIT
     init(){
-    }
+
+    }//END INIT
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PRELOAD
     preload(){
-      this.load.image('background','assets/scene1/background.png');
-    }
+
+    }//END PRELOAD
 
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CREATE
     create(){
-        this.add.image(720, 1280, 'background');
-
-        this.keyD = this.input.keyboard.on(
-            'keydown-D',
-            function(){
-                console.log('hi');
-                game.scene.scenes[0].scene.start("S2_Menu" );
-            },
-            this
-        );
-    }
+        this.cursors = this.input.keyboard.createCursorKeys();
+    }//END CREATE
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> UPDATE
     update(){
-
+        if (this.cursors.left.isDown)
+            {
+                this.scene.start("scene3_game1" );
+            }
+        if (this.cursors.right.isDown)
+            {
+                this.scene.start("scene5_game3" );
+            }
     }//END UPDATE
-
 
 }//END SCENE

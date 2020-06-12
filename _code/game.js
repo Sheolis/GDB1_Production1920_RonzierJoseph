@@ -9,7 +9,7 @@ physics: {
         }
     },
 scene:
-	[S1_Start, S2_Menu, S3_Jeu1, S4_Jeu2, S5_Jeu3]
+	[Scene1_start, Scene2_menu, Scene3_game1, Scene4_game2, Scene5_game3, SceneTransition_timer]
 };
 
 this.game = new Phaser.Game(config);

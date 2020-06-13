@@ -9,13 +9,31 @@ class Scene3_game1 extends Phaser.Scene{
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PRELOAD
     preload(){
-
+        this.load.image('backgroundGame','assets/backgroundGame.png');
+        this.load.spritesheet('egg','assets/scene3/egg682x1223.png',{frameWidth: 682, frameHeight: 1223});
     }//END PRELOAD
 
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CREATE
     create(){
+        this.frame = 0
         this.cursors = this.input.keyboard.createCursorKeys();
+        this.add.image(720, 1280, 'backgroundGame');
+        //EGG
+        this.egg = new GameObject(this, 720, 1280, 'egg').setSize(600,1000);
+
+        this.egg.on('pointerover', function(){
+              },);
+        this.egg.on('pointerout', function(){
+            });
+        this.egg.on('pointerdown', function(){
+            this.newFrame = this.getCurrentFrame() + 1
+            if(this.newFrame <= 3){
+                this.setCurrentFrame(this.newFrame);
+                this.setFrame(this.newFrame)
+            }
+            if(this.newFrame <= 3){}
+        });
     }//END CREATE
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> UPDATE

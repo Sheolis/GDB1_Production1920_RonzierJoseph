@@ -18,10 +18,22 @@ class Scene3_game1 extends Phaser.Scene{
         this.frame = 0
         this.cursors = this.input.keyboard.createCursorKeys();
         this.add.image(720, 1280, 'backgroundGame');
-        this.order = new GameObject(this, 0, 275, 'order01');
+        this.order = new GameObject(this, -500, 275, 'order01');
+
+        //timer
+        this.fxTimer = this.sound.add('timerKrr').setVolume(8);
+        this.timerSprite = new GameObject(this, -1000, 255, 'timerSprite').setScale(0.6);
+        this.timerStatut = 0;
+        this.anims.create({
+            key:'timerRoll',
+            frames: this.anims.generateFrameNumbers('timerSprite', {start: 6, end: 7}),
+            frameRate: 10,
+            repeat: 0
+        });
+        this.time.addEvent({delay : 1000, callback : function(){this.timerStatut += 1; this.fxTimer.play(); this.timerSprite.anims.play('timerRoll'); this.timerSprite.on('animationcomplete', function(){this.timerSprite.setFrame(this.timerStatut);}, this);}, callbackScope : this, repeat : 4});
+
         //EGG
         this.egg = new GameObject(this, 720, 1280, 'egg').setSize(600,1000);
-
         this.egg.on('pointerover', function(){
               },);
         this.egg.on('pointerout', function(){
@@ -41,11 +53,22 @@ class Scene3_game1 extends Phaser.Scene{
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> UPDATE
     update(){
-        if(this.order.body.center.x < 645 ) {
-            this.order.body.velocity.x = 50000;
+
+        //timer
+        if(this.timerSprite.body.center.x < 150 ) {
+            this.timerSprite.body.velocity.x = 4000;
+        }else{
+            this.timerSprite.body.velocity.x = 0;
+        }
+
+        //banner
+        if(this.order.body.center.x < 600 ) {
+            this.order.body.velocity.x = 4000;
         }else{
             this.order.body.velocity.x = 0;
         }
+
+
 
         if (this.cursors.right.isDown)
             {

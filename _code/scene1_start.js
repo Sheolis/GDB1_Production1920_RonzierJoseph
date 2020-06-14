@@ -15,6 +15,8 @@ class Scene1_start extends Phaser.Scene{
       this.load.audio('win','sounds/music/win.mp3');
       this.load.audio('loose','sounds/music/loose.mp3');
       this.load.audio('stove','sounds/tictic.mp3');
+      this.load.audio('timerTic','sounds/timerTic.mp3');
+      this.load.audio('timerKrr','sounds/timerKrr.mp3');
 
       this.load.image('background1','assets/scene1/background.png');
       this.load.image('background2','assets/scene2/background.png');
@@ -23,6 +25,7 @@ class Scene1_start extends Phaser.Scene{
       this.load.image('order02','assets/scene4/order02.png');
       this.load.image('order03','assets/scene5/order03.png');
 
+      this.load.spritesheet('timerSprite','assets/timer689x723.png',{frameWidth: 685, frameHeight: 723});
       this.load.spritesheet('egg','assets/scene3/egg682x1223.png',{frameWidth: 682, frameHeight: 1223});
       this.load.spritesheet('stoveTop','assets/scene4/stoveTop1069x1223.png',{frameWidth: 1069, frameHeight: 1223});
       this.load.spritesheet('pasta','assets/scene5/pasta4813x1649.png',{frameWidth: 1203, frameHeight: 1649});

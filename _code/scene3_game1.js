@@ -9,8 +9,7 @@ class Scene3_game1 extends Phaser.Scene{
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PRELOAD
     preload(){
-        this.load.image('backgroundGame','assets/backgroundGame.png');
-        this.load.spritesheet('egg','assets/scene3/egg682x1223.png',{frameWidth: 682, frameHeight: 1223});
+
     }//END PRELOAD
 
 
@@ -32,7 +31,7 @@ class Scene3_game1 extends Phaser.Scene{
                 this.setCurrentFrame(this.newFrame);
                 this.setFrame(this.newFrame)
             }
-            if(this.newFrame <= 3){}
+
         });
     }//END CREATE
 

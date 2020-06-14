@@ -17,6 +17,7 @@ class Scene5_game3 extends Phaser.Scene{
     create(){
         this.cursors = this.input.keyboard.createCursorKeys();
         this.add.image(720, 1280, 'backgroundGame');
+        
     }//END CREATE
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> UPDATE

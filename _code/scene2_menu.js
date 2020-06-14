@@ -8,7 +8,7 @@ class Scene2_menu extends Phaser.Scene{
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PRELOAD
     preload(){
-        this.load.image('background2','assets/scene2/background.png');
+
     }
 
 

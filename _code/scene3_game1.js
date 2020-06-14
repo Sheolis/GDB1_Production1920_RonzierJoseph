@@ -18,6 +18,7 @@ class Scene3_game1 extends Phaser.Scene{
         this.frame = 0
         this.cursors = this.input.keyboard.createCursorKeys();
         this.add.image(720, 1280, 'backgroundGame');
+        this.order = new GameObject(this, 0, 275, 'order01');
         //EGG
         this.egg = new GameObject(this, 720, 1280, 'egg').setSize(600,1000);
 
@@ -32,11 +33,20 @@ class Scene3_game1 extends Phaser.Scene{
                 this.setFrame(this.newFrame)
             }
 
+
+        //TIMER
+
         });
     }//END CREATE
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> UPDATE
     update(){
+        if(this.order.body.center.x < 645 ) {
+            this.order.body.velocity.x = 50000;
+        }else{
+            this.order.body.velocity.x = 0;
+        }
+
         if (this.cursors.right.isDown)
             {
                 this.scene.start("scene4_game2" );

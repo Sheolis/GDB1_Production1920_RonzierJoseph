@@ -19,7 +19,7 @@ class Scene4_game2 extends Phaser.Scene{
         this.add.image(720, 1280, 'backgroundGame');
 
         //this.gazTimer = game.scene.scenes[3].time.addEvent({delay : 500, loop: false});
-
+        this.order = new GameObject(this, 0, 275, 'order02');
         this.stove = new GameObject(this, 720, 1280, 'stoveTop').setSize(250,250).setOffset(412,684);
         this.fxButton = this.sound.add('stove').setVolume(10);
         this.gazStatut = 0;
@@ -48,6 +48,12 @@ class Scene4_game2 extends Phaser.Scene{
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> UPDATE
     update(){
+        if(this.order.body.center.x < 645 ) {
+            this.order.body.velocity.x = 50000;
+        }else{
+            this.order.body.velocity.x = 0;
+        }
+
         if (this.cursors.left.isDown)
             {
                 this.scene.start("scene3_game1" );

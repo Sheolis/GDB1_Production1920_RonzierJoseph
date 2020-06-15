@@ -15,6 +15,10 @@ class Scene5_game3 extends Phaser.Scene{
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CREATE
     create(){
+        game.sound.stopAll();
+        this.music = this.sound.add('italy');
+        this.music.play();
+        this.music.setVolume(0.4);
 
         this.cursors = this.input.keyboard.createCursorKeys();
         this.pointer = this.input.activePointer
@@ -32,7 +36,7 @@ class Scene5_game3 extends Phaser.Scene{
         this.looseMov = this.add.video(720, 1280, 'loose').setVisible(false);
 
         //timer
-        this.fxTimer = this.sound.add('timerKrr').setVolume(8);
+        this.fxTimer = this.sound.add('timerKrr').setVolume(2);
         this.timerSprite = new GameObject(this, -1000, 255, 'timerSprite').setScale(0.6);
         this.timerStatut = 0;
         this.anims.create({
@@ -52,18 +56,20 @@ class Scene5_game3 extends Phaser.Scene{
                 }, this);
                 if(this.timerStatut == 5){
                     if(this.pasta["frame"].name == 3){
+                        game.sound.stopAll();
                         this.pasta.setVisible(false);
                         this.timerSprite.setVisible(false);
                         this.winMov.setVisible(true);
                         this.winMov.play();
-                        this.time.addEvent({delay : 6000, callback : function(){this.scene.start("scene1_start" );}, callbackScope : this, repeat : 0});
+                        this.time.addEvent({delay : 6000, callback : function(){game.sound.stopAll(); this.scene.start("scene1_start" );}, callbackScope : this, repeat : 0});
                     }
                     else{
+                        game.sound.stopAll();
                         this.pasta.setVisible(false);
                         this.timerSprite.setVisible(false);
                         this.looseMov.setVisible(true);
                         this.looseMov.play();
-                        this.time.addEvent({delay : 6000, callback : function(){this.scene.start("scene1_start" );}, callbackScope : this, repeat : 0});
+                        this.time.addEvent({delay : 6000, callback : function(){game.sound.stopAll(); this.scene.start("scene1_start" );}, callbackScope : this, repeat : 0});
                     }
                 }
             },

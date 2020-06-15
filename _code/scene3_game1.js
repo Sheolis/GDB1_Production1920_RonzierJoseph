@@ -94,14 +94,14 @@ class Scene3_game1 extends Phaser.Scene{
         }else{
             this.timerSprite.body.velocity.x = 0;
         }
-
         //banner
         if(this.order.body.center.x < 600 ) {
             this.order.body.velocity.x = 4000;
         }else{
             this.order.body.velocity.x = 0;
         }
-
+        if(this.timerSprite.body.center.x > 150 ) { this.timerSprite.body.center.x  = 150; }
+        if(this.order.body.center.x > 600 ){ this.order.body.center.x = 600; }
 
 
         if (this.cursors.right.isDown)

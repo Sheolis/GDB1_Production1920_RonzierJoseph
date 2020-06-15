@@ -21,12 +21,17 @@ class Scene1_start extends Phaser.Scene{
       this.load.audio('timerKrr','sounds/timerKrr.mp3');
 
       this.load.image('background1','assets/scene1/background.png');
+      this.load.image('EXE','assets/scene1/EXE.png');
       this.load.image('background2','assets/scene2/background.png');
+      this.load.image('button_adventure', 'assets/scene2/aventure.png');
+      this.load.image('button_adventureP', 'assets/scene2/aventurePUSH.png');
+      this.load.image('button_competition', 'assets/scene2/competition.png');
+      this.load.image('button_personnalize', 'assets/scene2/personnaliser.png');
+      this.load.image('locker', 'assets/scene2/cadenas-02.png');
       this.load.image('backgroundGame','assets/backgroundGame.png');
       this.load.image('order01','assets/scene3/order01.png');
       this.load.image('order02','assets/scene4/order02.png');
       this.load.image('order03','assets/scene5/order03.png');
-
       this.load.spritesheet('timerSprite','assets/timer689x723.png',{frameWidth: 685, frameHeight: 723});
       this.load.spritesheet('egg','assets/scene3/egg682x1223.png',{frameWidth: 682, frameHeight: 1223});
       this.load.spritesheet('stoveTop','assets/scene4/stoveTop1069x1223.png',{frameWidth: 1069, frameHeight: 1223});
@@ -36,18 +41,29 @@ class Scene1_start extends Phaser.Scene{
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CREATE
     create(){
-        this.music = this.sound.add('hub');
-        this.music.play();
+        this.music = this.sound.add('main');
+        //this.music.play();
         game.sound.setVolume(0.1);
+        this.soundStatut = 0;
         this.cursors = this.input.keyboard.createCursorKeys();
-        this.add.image(720, 1280, 'background1');
+        this.logo = this.add.image(720, 1280, 'background1').setInteractive();
+        this.exe = this.add.image(720, 1280, 'EXE').setInteractive();
 
-    }
+        this.exe.on('pointerdown', function(){
+            game.scene.scenes[0].exe.setVisible(false).setInteractive(false);
+            this.soundStatut = 1;
+        });
+        this.logo.on('pointerdown', function(){
+            if(this.soundStatut = 1){
+                game.scene.scenes[0].scene.start("scene2_menu" );
+            }
+        });
+    }//END CREATE
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> UPDATE
     update(){
         if (game.sound.context.state === 'suspended') {game.sound.context.resume();}
-        loop(this.music);
+        //loop(this.music); //global.js
 
         if (this.cursors.right.isDown)
             {

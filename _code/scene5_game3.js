@@ -19,11 +19,11 @@ class Scene5_game3 extends Phaser.Scene{
         this.cursors = this.input.keyboard.createCursorKeys();
         this.pointer = this.input.activePointer
         this.add.image(720, 1280, 'backgroundGame');
+        this.order = new GameObject(this, 0, 275, 'order03');
 
         this.winMov = this.add.video(720, 1280, 'win').setVisible(false);
         this.looseMov = this.add.video(720, 1280, 'loose').setVisible(false);
 
-        this.order = new GameObject(this, 0, 275, 'order03');
         this.pasta = new GameObject(this, 720, 1267, 'pasta');
         this.eggLeft = new GameObject(this, 457, 1680, 'egg').setFrame(4).setScale(0.7);
         this.eggRight = new GameObject(this, 1076, 1680, 'egg').setFrame(6).setScale(0.7);
@@ -129,6 +129,11 @@ class Scene5_game3 extends Phaser.Scene{
         }else{
             this.order.body.velocity.x = 0;
         }
+        if(this.timerSprite.body.center.x > 150 ) { this.timerSprite.body.center.x  = 150; }
+        if(this.order.body.center.x > 600 ){ this.order.body.center.x = 600; }
+
+
+
         if(this.leftStatut == 1){
             this.eggLeft.setPosition(this.pointer.x, this.pointer.y);
         }

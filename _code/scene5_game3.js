@@ -19,6 +19,10 @@ class Scene5_game3 extends Phaser.Scene{
         this.cursors = this.input.keyboard.createCursorKeys();
         this.pointer = this.input.activePointer
         this.add.image(720, 1280, 'backgroundGame');
+
+        this.winMov = this.add.video(720, 1280, 'win').setVisible(false);
+        this.looseMov = this.add.video(720, 1280, 'loose').setVisible(false);
+
         this.order = new GameObject(this, 0, 275, 'order03');
         this.pasta = new GameObject(this, 720, 1267, 'pasta');
         this.eggLeft = new GameObject(this, 457, 1680, 'egg').setFrame(4).setScale(0.7);
@@ -36,7 +40,35 @@ class Scene5_game3 extends Phaser.Scene{
             frameRate: 10,
             repeat: 0
         });
-        this.time.addEvent({delay : 1000, callback : function(){this.timerStatut += 1; this.fxTimer.play(); this.timerSprite.anims.play('timerRoll'); this.timerSprite.on('animationcomplete', function(){this.timerSprite.setFrame(this.timerStatut);}, this);}, callbackScope : this, repeat : 4});
+        this.time.addEvent({
+            delay : 1000,
+            callback : function(){
+                this.timerStatut += 1;
+                this.fxTimer.play();
+                this.timerSprite.anims.play('timerRoll');
+                this.timerSprite.on('animationcomplete', function(){
+                    this.timerSprite.setFrame(this.timerStatut);
+                }, this);
+                if(this.timerStatut == 5){
+                    if(this.pasta["frame"].name == 3){
+                        this.pasta.setVisible(false);
+                        this.timerSprite.setVisible(false);
+                        this.winMov.setVisible(true);
+                        this.winMov.play();
+                        this.time.addEvent({delay : 6000, callback : function(){this.scene.start("scene1_start" );}, callbackScope : this, repeat : 0});
+                    }
+                    else{
+                        this.pasta.setVisible(false);
+                        this.timerSprite.setVisible(false);
+                        this.looseMov.setVisible(true);
+                        this.looseMov.play();
+                        this.time.addEvent({delay : 6000, callback : function(){this.scene.start("scene1_start" );}, callbackScope : this, repeat : 0});
+                    }
+                }
+            },
+            callbackScope : this,
+             repeat : 4
+        });
 
 
         this.eggLeft.on('pointerdown', function(){

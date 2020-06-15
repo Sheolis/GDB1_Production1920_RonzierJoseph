@@ -18,8 +18,11 @@ class Scene4_game2 extends Phaser.Scene{
         this.cursors = this.input.keyboard.createCursorKeys();
         this.add.image(720, 1280, 'backgroundGame');
 
-        //this.gazTimer = game.scene.scenes[3].time.addEvent({delay : 500, loop: false});
         this.order = new GameObject(this, 0, 275, 'order02');
+
+        this.winMov = this.add.video(720, 1280, 'win').setVisible(false);
+        this.looseMov = this.add.video(720, 1280, 'loose').setVisible(false);
+
         this.stove = new GameObject(this, 720, 1280, 'stoveTop').setSize(250,250).setOffset(412,684);
         this.fxButton = this.sound.add('stove').setVolume(10);
         this.gazStatut = 0;
@@ -40,14 +43,54 @@ class Scene4_game2 extends Phaser.Scene{
             frameRate: 10,
             repeat: 0
         });
-        this.time.addEvent({delay : 1000, callback : function(){this.timerStatut += 1; this.fxTimer.play(); this.timerSprite.anims.play('timerRoll'); this.timerSprite.on('animationcomplete', function(){this.timerSprite.setFrame(this.timerStatut);}, this);}, callbackScope : this, repeat : 4});
+
+        this.time.addEvent({
+            delay : 1000,
+            callback : function(){
+                this.timerStatut += 1;
+                this.fxTimer.play();
+                this.timerSprite.anims.play('timerRoll');
+                this.timerSprite.on('animationcomplete',
+                function(){
+                    this.timerSprite.setFrame(this.timerStatut);
+                }, this);
+                if(this.timerStatut == 5){
+                    if(this.gazStatut == 1){
+                        this.stove.setVisible(false);
+                        this.timerSprite.setVisible(false);
+                        this.winMov.setVisible(true);
+                        this.winMov.play();
+                        this.time.addEvent({delay : 6000, callback : function(){this.scene.start("scene5_game3" );}, callbackScope : this, repeat : 0});
+                    }
+                    else{
+                        this.stove.setVisible(false);
+                        this.timerSprite.setVisible(false);
+                        this.looseMov.setVisible(true);
+                        this.looseMov.play();
+                        this.time.addEvent({delay : 6000, callback : function(){this.scene.start("scene5_game3" );}, callbackScope : this, repeat : 0});
+                    }
+                }
+            },
+            callbackScope : this,
+            repeat : 4
+
+        });
 
 
         this.stove.on('pointerdown', function(){
             if(game.scene.scenes[3].gazStatut == 0 ){
                 this.setFrame(3);
                 game.scene.scenes[3].fxButton.play();
-                game.scene.scenes[3].gazTimer = game.scene.scenes[3].time.addEvent({delay : 1000, callback : function(){ this.gazStatut = 1; this.stove.anims.play('gazOn'); this.fxButton.stop() }, callbackScope: game.scene.scenes[3], loop: false});
+                game.scene.scenes[3].gazTimer = game.scene.scenes[3].time.addEvent({
+                    delay : 1000,
+                    callback : function(){
+                        this.gazStatut = 1;
+                        this.stove.anims.play('gazOn');
+                        this.fxButton.stop()
+                    },
+                    callbackScope: game.scene.scenes[3],
+                    loop: false
+                  });
             }
         });
         this.stove.on('pointerup', function(){

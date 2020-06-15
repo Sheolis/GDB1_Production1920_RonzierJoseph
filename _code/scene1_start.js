@@ -8,6 +8,8 @@ class Scene1_start extends Phaser.Scene{
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PRELOAD
     preload(){
+      this.load.video('win','movie/win.mp4');
+      this.load.video('loose','movie/loose.mp4');
       this.load.audio('chine','sounds/music/china.mp3');
       this.load.audio('hub','sounds/music/hub.mp3');
       this.load.audio('italy','sounds/music/italy.mp3');
@@ -35,7 +37,7 @@ class Scene1_start extends Phaser.Scene{
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CREATE
     create(){
         this.music = this.sound.add('hub');
-        //this.music.play();
+        this.music.play();
         game.sound.setVolume(0.1);
         this.cursors = this.input.keyboard.createCursorKeys();
         this.add.image(720, 1280, 'background1');
@@ -45,7 +47,7 @@ class Scene1_start extends Phaser.Scene{
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> UPDATE
     update(){
         if (game.sound.context.state === 'suspended') {game.sound.context.resume();}
-        //loop(this.music);
+        loop(this.music);
 
         if (this.cursors.right.isDown)
             {

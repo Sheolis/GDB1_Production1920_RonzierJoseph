@@ -118,19 +118,19 @@ class Scene5_game3 extends Phaser.Scene{
     update(){
 
         //timer
-        if(this.timerSprite.body.center.x < 150 ) {
+        if(this.timerSprite.body.center.x < 140 ) {
             this.timerSprite.body.velocity.x = 4000;
         }else{
             this.timerSprite.body.velocity.x = 0;
         }
         //banner
-        if(this.order.body.center.x < 645 ) {
+        if(this.order.body.center.x < 590 ) {
             this.order.body.velocity.x = 4000;
         }else{
             this.order.body.velocity.x = 0;
         }
-        if(this.timerSprite.body.center.x > 150 ) { this.timerSprite.body.center.x  = 150; }
-        if(this.order.body.center.x > 600 ){ this.order.body.center.x = 600; }
+        if(this.timerSprite.body.center.x > 200 ) { this.timerSprite.setPosition(200, 255); }
+        if(this.order.body.center.x > 630 ){ this.order.setPosition(630, 275); }
 
 
 

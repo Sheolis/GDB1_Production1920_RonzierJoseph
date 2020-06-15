@@ -33,6 +33,7 @@ class Scene1_start extends Phaser.Scene{
       this.load.image('order02','assets/scene4/order02.png');
       this.load.image('order03','assets/scene5/order03.png');
       this.load.spritesheet('timerSprite','assets/timer689x723.png',{frameWidth: 685, frameHeight: 723});
+      this.load.spritesheet('loadingSprite', 'assets/scene2/loading255x260.png', {frameWidth: 255, frameHeight: 260});
       this.load.spritesheet('egg','assets/scene3/egg682x1223.png',{frameWidth: 682, frameHeight: 1223});
       this.load.spritesheet('stoveTop','assets/scene4/stoveTop1069x1223.png',{frameWidth: 1069, frameHeight: 1223});
       this.load.spritesheet('pasta','assets/scene5/pasta4813x1649.png',{frameWidth: 1203, frameHeight: 1649});
@@ -42,8 +43,8 @@ class Scene1_start extends Phaser.Scene{
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CREATE
     create(){
         this.music = this.sound.add('main');
-        //this.music.play();
-        game.sound.setVolume(0.1);
+        this.music.play();
+        game.sound.setVolume(1);
         this.soundStatut = 0;
         this.cursors = this.input.keyboard.createCursorKeys();
         this.logo = this.add.image(720, 1280, 'background1').setInteractive();
@@ -63,7 +64,7 @@ class Scene1_start extends Phaser.Scene{
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> UPDATE
     update(){
         if (game.sound.context.state === 'suspended') {game.sound.context.resume();}
-        //loop(this.music); //global.js
+        loop(this.music); //global.js
 
         if (this.cursors.right.isDown)
             {

@@ -21,14 +21,15 @@ class Scene5_game3 extends Phaser.Scene{
         this.add.image(720, 1280, 'backgroundGame');
         this.order = new GameObject(this, 0, 275, 'order03');
 
-        this.winMov = this.add.video(720, 1280, 'win').setVisible(false);
-        this.looseMov = this.add.video(720, 1280, 'loose').setVisible(false);
 
         this.pasta = new GameObject(this, 720, 1267, 'pasta');
         this.eggLeft = new GameObject(this, 457, 1680, 'egg').setFrame(4).setScale(0.7);
         this.eggRight = new GameObject(this, 1076, 1680, 'egg').setFrame(6).setScale(0.7);
         this.leftStatut = 0
         this.rightStatut = 0
+
+        this.winMov = this.add.video(720, 1280, 'win').setVisible(false);
+        this.looseMov = this.add.video(720, 1280, 'loose').setVisible(false);
 
         //timer
         this.fxTimer = this.sound.add('timerKrr').setVolume(8);

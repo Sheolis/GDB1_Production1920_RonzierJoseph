@@ -20,7 +20,7 @@ class Scene2_menu extends Phaser.Scene{
         this.add.image(720, 1830, 'locker');
         this.add.image(750, 2180, 'button_personnalize');
         this.add.image(720, 2180, 'locker');
-        this.add.spritesheet()
+        //this.add.spritesheet()
         this.loaded = 0;
 
         this.playButton = new GameObject(this, 750, 1480, 'button_adventure' );

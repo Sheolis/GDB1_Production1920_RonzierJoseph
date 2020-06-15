@@ -15,11 +15,11 @@ class Scene3_game1 extends Phaser.Scene{
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CREATE
     create(){
+        game.sound.stopAll();
         this.frame = 0
         this.cursors = this.input.keyboard.createCursorKeys();
         this.add.image(720, 1280, 'backgroundGame');
         this.order = new GameObject(this, -500, 275, 'order01');
-
         //timer
 
         this.fxTimer = this.sound.add('timerKrr').setVolume(8);

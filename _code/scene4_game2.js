@@ -20,7 +20,6 @@ class Scene4_game2 extends Phaser.Scene{
         this.music.play();
         this.music.setVolume(0.4);
 
-        this.cursors = this.input.keyboard.createCursorKeys();
         this.add.image(720, 1280, 'backgroundGame');
 
         this.order = new GameObject(this, 0, 275, 'order02');
@@ -39,7 +38,7 @@ class Scene4_game2 extends Phaser.Scene{
         });
 
         //timer
-        this.fxTimer = this.sound.add('timerKrr').setVolume(2);
+        this.fxTimer = this.sound.add('timerKrr').setVolume(1);
         this.timerSprite = new GameObject(this, -1000, 255, 'timerSprite').setScale(0.6);
         this.timerStatut = 0;
         this.anims.create({
@@ -127,15 +126,6 @@ class Scene4_game2 extends Phaser.Scene{
         if(this.order.body.center.x > 630 ){ this.order.setPosition(630, 275); }
 
 
-
-        if (this.cursors.left.isDown)
-            {
-                this.scene.start("scene3_game1" );
-            }
-        if (this.cursors.right.isDown)
-            {
-                this.scene.start("scene5_game3" );
-            }
     }//END UPDATE
 
 }//END SCENE

@@ -19,6 +19,12 @@ class Scene1_start extends Phaser.Scene{
       this.load.audio('stove','sounds/tictic.mp3');
       this.load.audio('timerTic','sounds/timerTic.mp3');
       this.load.audio('timerKrr','sounds/timerKrr.mp3');
+      this.load.audio('tapEgg1','sounds/scene3_tapEgg01.mp3');
+      this.load.audio('tapEgg2','sounds/scene3_tapEgg02.mp3');
+      this.load.audio('tapEgg3','sounds/scene3_tapEgg03.mp3');
+      this.load.audio('tapEgg4','sounds/scene3_tapEgg04.mp3');
+      this.load.audio('addEgg1','sounds/scene6_eggAdd01.mp3');
+      this.load.audio('addEgg2','sounds/scene6_eggAdd02.mp3');
 
       this.load.image('background1','assets/scene1/background.png');
       this.load.image('EXE','assets/scene1/EXE.png');
@@ -46,7 +52,7 @@ class Scene1_start extends Phaser.Scene{
         this.music.play();
         game.sound.setVolume(1);
         this.soundStatut = 0;
-        this.cursors = this.input.keyboard.createCursorKeys();
+
         this.logo = this.add.image(720, 1280, 'background1').setInteractive();
         this.exe = this.add.image(720, 1280, 'EXE').setInteractive();
 
@@ -66,14 +72,6 @@ class Scene1_start extends Phaser.Scene{
         if (game.sound.context.state === 'suspended') {game.sound.context.resume();}
         loop(this.music); //global.js
 
-        if (this.cursors.right.isDown)
-            {
-                this.scene.start("scene2_menu" );
-            }
-        if (this.cursors.left.isDown)
-            {
-                this.scene.start("scene5_game3" );
-            }
     }//END UPDATE
 
 

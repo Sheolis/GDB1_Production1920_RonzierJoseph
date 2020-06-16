@@ -19,14 +19,18 @@ class Scene3_game1 extends Phaser.Scene{
         this.music = this.sound.add('italy');
         this.music.play();
         this.music.setVolume(0.4);
+        this.fxEgg1 = this.sound.add('tapEgg1').setVolume(10);
+        this.fxEgg2 = this.sound.add('tapEgg2').setVolume(10);
+        this.fxEgg3 = this.sound.add('tapEgg3').setVolume(10);
+        this.fxEgg4 = this.sound.add('tapEgg4').setVolume(10);
+        this.fxEgg = [this.fxEgg1, this.fxEgg2, this.fxEgg3, this.fxEgg4];
 
         this.frame = 0
-        this.cursors = this.input.keyboard.createCursorKeys();
         this.add.image(720, 1280, 'backgroundGame');
         this.order = new GameObject(this, -500, 275, 'order01');
         //timer
 
-        this.fxTimer = this.sound.add('timerKrr').setVolume(2);
+        this.fxTimer = this.sound.add('timerKrr').setVolume(1);
         this.timerSprite = new GameObject(this, -1000, 255, 'timerSprite').setScale(0.6);
         this.timerStatut = 0;
 
@@ -83,6 +87,8 @@ class Scene3_game1 extends Phaser.Scene{
             if(this.newFrame <= 3){
                 this.setCurrentFrame(this.newFrame);
                 this.setFrame(this.newFrame)
+                game.scene.scenes[2].fxEgg[this.newFrame].play();
+
             }
 
 
@@ -110,14 +116,6 @@ class Scene3_game1 extends Phaser.Scene{
         if(this.order.body.center.x > 630 ){ this.order.setPosition(630, 275); }
 
 
-        if (this.cursors.right.isDown)
-            {
-                this.scene.start("scene4_game2" );
-            }
-        if (this.cursors.left.isDown)
-            {
-                this.scene.start("scene2_menu" );
-            }
     }//END UPDATE
 
 }//END SCENE

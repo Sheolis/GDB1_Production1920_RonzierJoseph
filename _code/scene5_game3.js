@@ -19,8 +19,9 @@ class Scene5_game3 extends Phaser.Scene{
         this.music = this.sound.add('italy');
         this.music.play();
         this.music.setVolume(0.4);
+        this.fxEgg1 = this.sound.add('addEgg1').setVolume(1);
+        this.fxEgg2 = this.sound.add('addEgg2').setVolume(1);
 
-        this.cursors = this.input.keyboard.createCursorKeys();
         this.pointer = this.input.activePointer
         this.add.image(720, 1280, 'backgroundGame');
         this.order = new GameObject(this, 0, 275, 'order03');
@@ -36,7 +37,7 @@ class Scene5_game3 extends Phaser.Scene{
         this.looseMov = this.add.video(720, 1280, 'loose').setVisible(false);
 
         //timer
-        this.fxTimer = this.sound.add('timerKrr').setVolume(2);
+        this.fxTimer = this.sound.add('timerKrr').setVolume(1);
         this.timerSprite = new GameObject(this, -1000, 255, 'timerSprite').setScale(0.6);
         this.timerStatut = 0;
         this.anims.create({
@@ -85,6 +86,7 @@ class Scene5_game3 extends Phaser.Scene{
             game.scene.scenes[4].leftStatut = 0;
             if(this.body.center.y > 450 && this.body.center.y < 1300 && this.body.center.x > 295 && this.body.center.x < 1220 ){
                 this.setVisible(false);
+                game.scene.scenes[4].fxEgg1.play();
                 game.scene.scenes[4].leftStatut = 2;
                 if(game.scene.scenes[4].rightStatut != 2) {
                     game.scene.scenes[4].pasta.setFrame(2);
@@ -105,6 +107,7 @@ class Scene5_game3 extends Phaser.Scene{
             game.scene.scenes[4].rightStatut = 0;
             if(this.body.center.y > 450 && this.body.center.y < 1300 && this.body.center.x > 295 && this.body.center.x < 1220 ){
                 this.setVisible(false);
+                game.scene.scenes[4].fxEgg2.play();
                 game.scene.scenes[4].rightStatut = 2;
                 if(game.scene.scenes[4].leftStatut != 2) {
                     game.scene.scenes[4].pasta.setFrame(1);
@@ -147,14 +150,7 @@ class Scene5_game3 extends Phaser.Scene{
         if(this.rightStatut == 1){
             this.eggRight.setPosition(this.pointer.x, this.pointer.y);
         }
-        if (this.cursors.left.isDown)
-            {
-                this.scene.start("scene4_game2" );
-            }
-        if (this.cursors.right.isDown)
-            {
-                this.scene.start("scene1_start" );
-            }
+
     }//END UPDATE
 
 }//END SCENE

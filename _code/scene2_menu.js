@@ -14,7 +14,7 @@ class Scene2_menu extends Phaser.Scene{
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CREATE
     create(){
-        this.cursors = this.input.keyboard.createCursorKeys();
+
         this.add.image(750, 1280, 'background2');
         this.add.image(750, 1830, 'button_competition');
         this.add.image(720, 1830, 'locker');
@@ -44,14 +44,7 @@ class Scene2_menu extends Phaser.Scene{
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> UPDATE
     update(){
         loop(game.scene.scenes[0].music);//global.js
-        if (this.cursors.right.isDown)
-            {
-                this.scene.start("scene3_game1" );
-            }
-        if (this.cursors.left.isDown)
-            {
-                this.scene.start("scene1_start" );
-            }
+
     }//END UPDATE
 
 

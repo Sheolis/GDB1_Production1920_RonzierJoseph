@@ -19,10 +19,10 @@ class Scene3_game1 extends Phaser.Scene{
         this.music = this.sound.add('italy');
         this.music.play();
         this.music.setVolume(0.4);
-        this.fxEgg1 = this.sound.add('tapEgg1').setVolume(10);
-        this.fxEgg2 = this.sound.add('tapEgg2').setVolume(10);
-        this.fxEgg3 = this.sound.add('tapEgg3').setVolume(10);
-        this.fxEgg4 = this.sound.add('tapEgg4').setVolume(10);
+        this.fxEgg1 = this.sound.add('tapEgg1').setVolume(2);
+        this.fxEgg2 = this.sound.add('tapEgg2').setVolume(2);
+        this.fxEgg3 = this.sound.add('tapEgg3').setVolume(2);
+        this.fxEgg4 = this.sound.add('tapEgg4').setVolume(3);
         this.fxEgg = [this.fxEgg1, this.fxEgg2, this.fxEgg3, this.fxEgg4];
 
         this.frame = 0
@@ -30,7 +30,7 @@ class Scene3_game1 extends Phaser.Scene{
         this.order = new GameObject(this, -500, 275, 'order01');
         //timer
 
-        this.fxTimer = this.sound.add('timerKrr').setVolume(1);
+        this.fxTimer = this.sound.add('timerKrr').setVolume(0.8);
         this.timerSprite = new GameObject(this, -1000, 255, 'timerSprite').setScale(0.6);
         this.timerStatut = 0;
 

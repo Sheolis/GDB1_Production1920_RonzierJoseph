@@ -28,7 +28,7 @@ class Scene4_game2 extends Phaser.Scene{
         this.looseMov = this.add.video(720, 1280, 'loose').setVisible(false);
 
         this.stove = new GameObject(this, 720, 1280, 'stoveTop').setSize(250,250).setOffset(412,684);
-        this.fxButton = this.sound.add('stove').setVolume(10);
+        this.fxButton = this.sound.add('stove').setVolume(2);
         this.gazStatut = 0;
         this.anims.create({
             key:'gazOn',
@@ -38,7 +38,7 @@ class Scene4_game2 extends Phaser.Scene{
         });
 
         //timer
-        this.fxTimer = this.sound.add('timerKrr').setVolume(1);
+        this.fxTimer = this.sound.add('timerKrr').setVolume(0.8);
         this.timerSprite = new GameObject(this, -1000, 255, 'timerSprite').setScale(0.6);
         this.timerStatut = 0;
         this.anims.create({

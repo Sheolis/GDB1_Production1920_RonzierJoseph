@@ -15,7 +15,7 @@ class Scene2_menu extends Phaser.Scene{
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CREATE
     create(){
 
-        this.add.image(750, 1280, 'background2');
+        this.add.image(720, 1280, 'background2');
         this.add.image(750, 1830, 'button_competition');
         this.add.image(720, 1830, 'locker');
         this.add.image(750, 2180, 'button_personnalize');

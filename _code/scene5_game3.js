@@ -37,7 +37,7 @@ class Scene5_game3 extends Phaser.Scene{
         this.looseMov = this.add.video(720, 1280, 'loose').setVisible(false);
 
         //timer
-        this.fxTimer = this.sound.add('timerKrr').setVolume(1);
+        this.fxTimer = this.sound.add('timerKrr').setVolume(0.8);
         this.timerSprite = new GameObject(this, -1000, 255, 'timerSprite').setScale(0.6);
         this.timerStatut = 0;
         this.anims.create({

@@ -28,6 +28,7 @@ class Scene1_start extends Phaser.Scene{
 
       this.load.image('background1','assets/scene1/background.png');
       this.load.image('EXE','assets/scene1/EXE.png');
+      this.load.image('black','assets/scene1/black.png');
       this.load.image('background2','assets/scene2/background.png');
       this.load.image('button_adventure', 'assets/scene2/aventure.png');
       this.load.image('button_adventureP', 'assets/scene2/aventurePUSH.png');
@@ -53,8 +54,18 @@ class Scene1_start extends Phaser.Scene{
         game.sound.setVolume(1);
         this.soundStatut = 0;
 
-        this.logo = this.add.image(720, 1280, 'background1').setInteractive();
-        this.exe = this.add.image(720, 1280, 'EXE').setInteractive();
+        this.logo = this.add.image(720, 1280, 'background1');
+        this.exe = this.add.image(720, 1280, 'EXE');
+        this.black = this.add.image(720, 1280, 'black').setAlpha(0.8);
+        this.loadingSprite = this.add.sprite(720, 1280, 'loadingSprite');
+        this.anims.create({
+            key:'loadingRoll',
+            frames: this.anims.generateFrameNumbers('loadingSprite', {start: 0, end: 7}),
+            frameRate: 8,
+            repeat: -1
+        });
+        this.loadingSprite.anims.play('loadingRoll');
+        this.loadingTimer = this.time.addEvent({delay : 10000, callback : function(){ this.loadingSprite.setVisible(false); this.black.setVisible(false); this.exe.setInteractive(); this.logo.setInteractive();}, callbackScope : this, repeat : 0 });
 
         this.exe.on('pointerdown', function(){
             game.scene.scenes[0].exe.setVisible(false).setInteractive(false);
